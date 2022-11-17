@@ -9,6 +9,7 @@ use App\Repositories\Contracts\UserSaveContract;
 use App\Services\Contracts\RegisterUserContract;
 use App\Services\Contracts\UserSignInContract;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserService implements RegisterUserContract, UserSignInContract
 {
@@ -43,6 +44,9 @@ class UserService implements RegisterUserContract, UserSignInContract
         if (!$user || !Hash::check($password, $user->password)) {
             return null;
         }
+        
+        $user->api_token = Str::random(40);
+        $this->userRepository->save($user);
         
         return $user;
 	}

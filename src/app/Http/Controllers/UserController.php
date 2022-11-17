@@ -31,7 +31,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $user = $service->signIn($request->get('email'), $request->get('password'));
+        $user = $service->signIn($request->input('email'), $request->input('password'));
 
         if (!$user) {
             return ['message' => 'Invalid email or password'];

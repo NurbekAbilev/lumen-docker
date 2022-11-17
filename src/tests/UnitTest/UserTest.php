@@ -17,7 +17,7 @@ class UserTest extends TestCase
 {   
     private RegisterUserContract $registerUserContract;
 
-    public function testRegisterUser()
+    private function mockUserRepository()
     {
         $this->app->bind(UserSaveContract::class, function() {
             $mockService = $this->createMock(UserRepository::class);
@@ -25,6 +25,11 @@ class UserTest extends TestCase
                 ->method('save');
             return $mockService;
         });
+    }
+
+    public function testRegisterUser()
+    {
+        $this->mockUserRepository();
 
         $userDTO = new RegisterUserDTO();
         $userDTO->first_name = '';
@@ -38,6 +43,7 @@ class UserTest extends TestCase
 
     public function testSignInUserSuccess()
     {
+        $this->mockUserRepository();
         $this->app->bind(UserQueryContract::class, function() {
             $mockService = $this->getMockBuilder(UserQueryContract::class)->getMock();
             $mockService->expects($this->once())
