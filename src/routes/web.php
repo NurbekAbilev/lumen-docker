@@ -16,3 +16,5 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('/api/user/register', ['uses' => 'UserController@userRegister']);

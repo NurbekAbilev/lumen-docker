@@ -2,12 +2,14 @@ version: "3.8"
 
 services: 
     db:
-        image: mysql:8.0
+        image: postgres:15.1
+        restart: always
         volumes: 
-            - db-data:/var/lib/mysql
+            - ./pg_data:/var/lib/postgresql/data
         environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=question_board
+            POSTGRES_PASSWORD: example
+        ports:
+            - "5432:5432"
 
     app:
         build: .
@@ -19,12 +21,12 @@ services:
             - APP_ENV=local
             - APP_KEY=base64:tLmYfUrrZITzLIkSjFnV+PCAFxkdU+duUxjVSIlrrHo=
             - APP_DEBUG=true
-            - DB_CONNECTION=mysql
+            - DB_CONNECTION=pgsql
             - DB_HOST=db ## same as the database service name
-            - DB_PORT=3306
-            - DB_DATABASE=question_board
-            - DB_USERNAME=root
-            - DB_PASSWORD=root
+            - DB_PORT=5432
+            - DB_DATABASE=postgres
+            - DB_USERNAME=postgres
+            - DB_PASSWORD=example
         restart: unless-stopped
         ports: 
             - 8000:80

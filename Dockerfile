@@ -1,5 +1,10 @@
 FROM fhsinchy/php-nginx-base:php8.1.3-fpm-nginx1.20.2-alpine3.15
 
+RUN apk update && \
+    apk add --no-cache \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
 # set composer related environment variables
 ENV PATH="/composer/vendor/bin:$PATH" \
     COMPOSER_ALLOW_SUPERUSER=1 \
