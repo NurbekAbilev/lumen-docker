@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class UserService implements RegisterUserContract, UserSignInContract
 {
     private UserSaveContract $userRepository;
-    private UserQuery $userQuery;
+    private UserQueryContract $userQuery;
 
     public function __construct(UserSaveContract $userSaveContract, UserQueryContract $userQuery)
     {
