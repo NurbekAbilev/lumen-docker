@@ -1,38 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+/** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Application Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Here is where you can register all of the routes for an application.
+| It is a breeze. Simply tell Lumen the URIs it should respond to
+| and give it the Closure to call when that URI is requested.
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+$router->get('/', function () use ($router) {
+    return $router->app->version();
 });
-
-Route::resource('questions', App\Http\Controllers\QuestionController::class)->only([
-    'index',
-    'show',
-])->names('questions');
-Route::resource('answers', App\Http\Controllers\AnswerController::class)->only(['store'])->names('answers');
-Route::resource('categories', App\Http\Controllers\CategoryController::class)->only(['show'])->names('categories');
-
-Route::middleware(['auth'])->prefix('dashboard')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::resource('questions', App\Http\Controllers\QuestionController::class)->only([
-        'create',
-        'store',
-    ])->names('questions');
-});
-
-require __DIR__.'/auth.php';

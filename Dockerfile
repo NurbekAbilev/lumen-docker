@@ -3,7 +3,7 @@ FROM fhsinchy/php-nginx-base:php8.1.3-fpm-nginx1.20.2-alpine3.15
 # set composer related environment variables
 ENV PATH="/composer/vendor/bin:$PATH" \
     COMPOSER_ALLOW_SUPERUSER=1 \
-    COMPOSER_VENDOR_DIR=/var/www/vendor \
+    COMPOSER_VENDOR_DIR=/var/www/app/vendor \
     COMPOSER_HOME=/composer
 
 # install composer
@@ -28,6 +28,8 @@ ENV APP_NAME="Question Board" \
 
 # copy entrypoint files
 COPY ./docker/docker-php-* /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-php-entrypoint
+RUN chmod +x /usr/local/bin/docker-php-entrypoint-dev
 RUN dos2unix /usr/local/bin/docker-php-entrypoint
 RUN dos2unix /usr/local/bin/docker-php-entrypoint-dev
 
@@ -40,7 +42,7 @@ WORKDIR /var/www/app
 COPY ./src .
 RUN composer dump-autoload -o \
     && chown -R :www-data /var/www/app \
-    && chmod -R 775 /var/www/app/storage /var/www/app/bootstrap/cache
+    && chmod -R 775 /var/www/app/storage
 
 EXPOSE 80
 
