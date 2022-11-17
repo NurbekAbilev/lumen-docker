@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DTO\RegisterUserDTO;
 use App\Services\Contracts\RegisterUserContract;
+use App\Services\Contracts\UserSignInContract;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -19,6 +20,22 @@ class UserController extends Controller
         ]);
 
         $user = $service->registerUser(RegisterUserDTO::fromRequest($request));
+
+        return ['data' => $user];
+    }
+
+    public function userSignIn(Request $request, UserSignInContract $service)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = $service->signIn($request->get('email'), $request->get('password'));
+
+        if (!$user) {
+            return ['message' => 'Invalid email or password'];
+        }
 
         return ['data' => $user];
     }
