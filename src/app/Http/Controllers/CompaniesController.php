@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DTO\CreateCompanyDTO;
+use App\Queries\Contracts\CompanyQueryContract;
 use App\Services\Contracts\CompanyCreateContract;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,15 @@ class CompaniesController extends Controller
         return [
             'message' => 'Company created',
             'data' => $company
+        ];
+    }
+
+    public function companyIndex(Request $request, CompanyQueryContract $companyQueryContract)
+    {  
+        $companies = $companyQueryContract->getAll($request);
+
+        return [
+            'data' => $companies
         ];
     }
 }

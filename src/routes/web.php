@@ -25,4 +25,5 @@ $router->patch('/api/user/recover-password', ['uses' => 'PasswordRecoveryControl
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('/api/user/companies', ['uses' => 'CompaniesController@createCompany']);
+    $router->get('/api/user/companies', ['uses' => 'CompaniesController@companyIndex']);
 });

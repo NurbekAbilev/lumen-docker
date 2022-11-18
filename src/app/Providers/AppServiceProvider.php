@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Queries\CompanyQuery;
+use App\Queries\Contracts\CompanyQueryContract;
 use App\Queries\Contracts\PasswordRecoveryQueryContract;
 use App\Queries\Contracts\UserQueryContract;
 use App\Queries\PasswordRecoverQuery;
@@ -44,5 +46,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(CompanyCreateContract::class, CompanyService::class);
         $this->app->bind(CreateCompanyRepository::class, CompanyRepository::class);
+        $this->app->bind(CompanyQueryContract::class, CompanyQuery::class);
     }
 }
