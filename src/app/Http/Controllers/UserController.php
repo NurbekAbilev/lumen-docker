@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DTO\RegisterUserDTO;
+use App\Services\Contracts\PasswordRecoveryCodeSendContract;
 use App\Services\Contracts\RegisterUserContract;
 use App\Services\Contracts\UserSignInContract;
 use Illuminate\Http\Request;
@@ -38,5 +39,16 @@ class UserController extends Controller
         }
 
         return ['data' => $user];
+    }
+
+    public function passwordRecoverySendEmail(Request $request, PasswordRecoveryCodeSendContract $passwordRecoveryCodeSendContract)
+    {
+        $this->validate($request, [
+            'email' => 'required|exists:users,email',
+        ]);
+
+        $passwordRecoveryCodeSendContract->sendCode($request->input('email'));
+
+        return ['message' => 'Code sent to email'];
     }
 }

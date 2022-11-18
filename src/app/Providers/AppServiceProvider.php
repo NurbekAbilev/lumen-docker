@@ -4,10 +4,14 @@ namespace App\Providers;
 
 use App\Queries\Contracts\UserQueryContract;
 use App\Queries\UserQuery;
+use App\Repositories\Contracts\PasswordRecoverySaveContract;
 use App\Repositories\Contracts\UserSaveContract;
+use App\Repositories\PasswordRecoveryRepository;
 use App\Repositories\UserRepository;
+use App\Services\Contracts\PasswordRecoveryCodeSendContract;
 use App\Services\Contracts\RegisterUserContract;
 use App\Services\Contracts\UserSignInContract;
+use App\Services\PasswordRecoveryService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,5 +29,9 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserSignInContract::class, UserService::class);
         $this->app->bind(UserQueryContract::class, UserQuery::class);
+
+        $this->app->bind(PasswordRecoveryCodeSendContract::class, PasswordRecoveryService::class);
+        $this->app->bind(PasswordRecoverySaveContract::class, PasswordRecoveryRepository::class);
+
     }
 }

@@ -4,7 +4,6 @@ namespace App\Services;
 use App\DTO\RegisterUserDTO;
 use App\Models\User;
 use App\Queries\Contracts\UserQueryContract;
-use App\Queries\UserQuery;
 use App\Repositories\Contracts\UserSaveContract;
 use App\Services\Contracts\RegisterUserContract;
 use App\Services\Contracts\UserSignInContract;
