@@ -6,10 +6,14 @@ use App\Queries\Contracts\PasswordRecoveryQueryContract;
 use App\Queries\Contracts\UserQueryContract;
 use App\Queries\PasswordRecoverQuery;
 use App\Queries\UserQuery;
+use App\Repositories\CompanyRepository;
 use App\Repositories\Contracts\PasswordRecoverySaveContract;
 use App\Repositories\Contracts\UserSaveContract;
+use App\Repositories\CreateCompanyRepository;
 use App\Repositories\PasswordRecoveryRepository;
 use App\Repositories\UserRepository;
+use App\Services\CompanyService;
+use App\Services\Contracts\CompanyCreateContract;
 use App\Services\Contracts\PasswordRecoverContract;
 use App\Services\Contracts\PasswordRecoveryCodeSendContract;
 use App\Services\Contracts\RegisterUserContract;
@@ -37,5 +41,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PasswordRecoverySaveContract::class, PasswordRecoveryRepository::class);
         $this->app->bind(PasswordRecoverContract::class, PasswordRecoveryService::class);
         $this->app->bind(PasswordRecoveryQueryContract::class, PasswordRecoverQuery::class);
+
+        $this->app->bind(CompanyCreateContract::class, CompanyService::class);
+        $this->app->bind(CreateCompanyRepository::class, CompanyRepository::class);
     }
 }

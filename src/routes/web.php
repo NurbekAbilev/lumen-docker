@@ -22,3 +22,7 @@ $router->post('/api/user/sign-in', ['uses' => 'UserController@userSignIn']);
 
 $router->post('/api/user/recover-password', ['uses' => 'PasswordRecoveryController@passwordRecoverySendEmail']);
 $router->patch('/api/user/recover-password', ['uses' => 'PasswordRecoveryController@recoverPassword']);
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->post('/api/user/companies', ['uses' => 'CompaniesController@createCompany']);
+});
