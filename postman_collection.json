@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "5146dc4f-9b15-4d3e-8cf7-a9e177c7415e",
+		"name": "LumenTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4900567"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "first_name",
+							"value": "asdf",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "qwer",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "asdf2@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asdf",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "7125",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIgn In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "asdf2@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/sign-in",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"sign-in"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "asdf2@mail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "asdf",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Send Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "asdf2@mail.com"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/recover-password",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"recover-password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "asdf2@mail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/recover-password?email=asdf2@mail.com&code=AIlbaUru5xFkzHBPc0U3QAx9biE4nl0YNA29pLKh&new_password=123456",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"recover-password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "asdf2@mail.com"
+						},
+						{
+							"key": "code",
+							"value": "AIlbaUru5xFkzHBPc0U3QAx9biE4nl0YNA29pLKh"
+						},
+						{
+							"key": "new_password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "api_token",
+							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "qwer",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "123876",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "asdfadsf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/companies",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "api_token",
+							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/companies?api_token=NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
