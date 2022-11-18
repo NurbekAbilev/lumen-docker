@@ -30,4 +30,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public function passwordRecoveries()
+    {
+        return $this->hasMany(PasswordRecovery::class, 'user_id', 'id');   
+    }
 }

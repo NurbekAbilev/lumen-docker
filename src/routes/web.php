@@ -19,4 +19,6 @@ $router->get('/', function () use ($router) {
 
 $router->post('/api/user/register', ['uses' => 'UserController@userRegister']);
 $router->post('/api/user/sign-in', ['uses' => 'UserController@userSignIn']);
-$router->post('/api/user/recover-password', ['uses' => 'UserController@passwordRecoverySendEmail']);
+
+$router->post('/api/user/recover-password', ['uses' => 'PasswordRecoveryController@passwordRecoverySendEmail']);
+$router->patch('/api/user/recover-password', ['uses' => 'PasswordRecoveryController@recoverPassword']);
