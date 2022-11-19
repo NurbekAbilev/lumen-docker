@@ -35,4 +35,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasMany(PasswordRecovery::class, 'user_id', 'id');   
     }
+
+    public function companies()
+    {
+        return $this->hasMany(Company::class, 'user_id', 'id');   
+    }
 }
