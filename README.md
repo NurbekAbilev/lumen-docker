@@ -21,10 +21,16 @@ docker-compose exec app vendor/bin/phpunit
 
 В корне проекта есть Postman коллекция для тестировния API
 ```
-CTRL + O -> postman_collection.json
+CTRL + O -> file -> postman_collection.json
 ```
 
-Все авторизационные токены уже захардкожены. По желанию можно самому создать пользователя и авторизоваться
+Можно авторизоваться по тестовому пользователю 
+```
+username: test@mail.com
+password: test
+```
+ 
+По желанию можно зарегистрировать нового пользвателя
 
 ## Авторизация
 

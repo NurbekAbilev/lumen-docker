@@ -16,27 +16,27 @@
 					"urlencoded": [
 						{
 							"key": "first_name",
-							"value": "asdf",
+							"value": "john",
 							"type": "text"
 						},
 						{
 							"key": "last_name",
-							"value": "qwer",
+							"value": "doe",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "asdf2@mail.com",
+							"value": "john_doe@mail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "asdf",
+							"value": "test",
 							"type": "text"
 						},
 						{
 							"key": "phone",
-							"value": "7125",
+							"value": "7777123123",
 							"type": "text"
 						}
 					]
@@ -66,12 +66,12 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "asdf2@mail.com",
+							"value": "test@mail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123456",
+							"value": "test",
 							"type": "text"
 						}
 					]
@@ -145,7 +145,7 @@
 				"method": "PATCH",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/api/user/recover-password?email=asdf2@mail.com&code=AIlbaUru5xFkzHBPc0U3QAx9biE4nl0YNA29pLKh&new_password=123456",
+					"raw": "localhost:8000/api/user/recover-password?email=test@mail.com&code=AIlbaUru5xFkzHBPc0U3QAx9biE4nl0YNA29pLKh&new_password=123456",
 					"host": [
 						"localhost"
 					],
@@ -158,7 +158,7 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "asdf2@mail.com"
+							"value": "test@mail.com"
 						},
 						{
 							"key": "code",
@@ -176,6 +176,16 @@
 		{
 			"name": "Company Create",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pptZ8CrKojX1eGJ5uReqhZnnEC1op8KzsVWoYIMo",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -188,23 +198,61 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "api_token",
-							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
-							"type": "text"
-						},
-						{
 							"key": "title",
-							"value": "qwer",
+							"value": "test title",
 							"type": "text"
 						},
 						{
 							"key": "phone",
-							"value": "123876",
+							"value": "12345678",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "asdfadsf",
+							"value": "test description",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/user/companies",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pptZ8CrKojX1eGJ5uReqhZnnEC1op8KzsVWoYIMo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "api_token",
+							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
 							"type": "text"
 						}
 					]
@@ -223,47 +271,8 @@
 					"query": [
 						{
 							"key": "api_token",
-							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
+							"value": "pptZ8CrKojX1eGJ5uReqhZnnEC1op8KzsVWoYIMo",
 							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Company Index",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "api_token",
-							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "localhost:8000/api/user/companies?api_token=NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"user",
-						"companies"
-					],
-					"query": [
-						{
-							"key": "api_token",
-							"value": "NSXZfjFkqc9ZmxJsJGxLy9wK4SYjX5s2XLjOKDIg"
 						}
 					]
 				}
