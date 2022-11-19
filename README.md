@@ -16,6 +16,8 @@ docker-compose exec app vendor/bin/phpunit
 
 *В корне проекта есть Postman коллекция для тестировния API*
 
+*CTRL + O -> postman_collection.json*
+
 ## todo
 * Добавить пагинацию для списка компаний
 * Проверять аутентификацию не по input а по Bearer токену(заголовку)
